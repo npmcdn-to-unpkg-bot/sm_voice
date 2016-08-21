@@ -70,3 +70,9 @@ class TwilioAPIClient:
         r = twiml.Response()
         r.say(message)
         return r.toxml(xml_declaration=False)
+
+    @staticmethod
+    def hangup():
+        r = twiml.Response()
+        r.hangup()
+        return r.toxml(xml_declaration=False)

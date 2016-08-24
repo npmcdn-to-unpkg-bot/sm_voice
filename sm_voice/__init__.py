@@ -27,7 +27,7 @@ def parse_configs(section, required_keys=[]):
 
 smapi_cfg = parse_configs("SMAPI", ["api_key", "access_token"])
 tapi_cfg = parse_configs("TwilioAPI", ["auth_token", "account_sid", "from_number"])
-app_url = parse_configs("SMVoice", ["app_url"]).get("app_url")
+app_url = parse_configs("SMVoice", ["app_ext_url"]).get("app_ext_url")
 
 try:
     smapi = SMAPIClient(**smapi_cfg)
@@ -35,7 +35,7 @@ except Exception as e:
     print("failed to initialize SMAPIClient. check connection or config.ini credentials.")
     exit()
 try:
-    tapi = TwilioAPIClient(**tapi_cfg, app_base_url=app_url)
+    tapi = TwilioAPIClient(**tapi_cfg, app_external_url=app_url)
 except Exception as e:
     print("Failed to initialize TwilioAPIClient. Check connection or config.ini credentials")
     exit()

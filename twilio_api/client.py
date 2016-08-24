@@ -13,15 +13,16 @@ class TwilioAPIClient:
         > https://www.twilio.com/console/phone-numbers/incoming
     with webhook invocation (e.g. app_base_url/<entry_point>). Then set up a route in your app - e.g. /incoming_calls in sm_voice_views.py
     """
-    def __init__(self, account_sid, auth_token, app_base_url, from_number):
+    def __init__(self, account_sid, auth_token, app_external_url, from_number):
         """
         :param account_sid: str: Twilio account SID (https://www.twilio.com/console/account/settings)
         :param auth_token: str: Twilio account auth token (https://www.twilio.com/console/account/settings)
-        :param app_base_url: str: Your application's URL. https://ExampleTwilioWebServer.com
+        :param app_external_url: str: Your application's externally-accessible URL (so NOT localhost/127.0.0.1/0.0.0.0)
+                A proper example would be https://ExampleWebAppThatTwillioWillCall.com
         :param from_number: str: Your verified-by-Twilio, displayed as caller ID.
         """
         self.from_number = from_number
-        self._app_base_url = app_base_url
+        self._app_base_url = app_external_url
         self._client = TwilioRestClient(account_sid, auth_token)
 
     def call_phone(self, call_to, action_uri, status_callback_uri=None, record=False):

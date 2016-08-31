@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from sm_voice import app, smapi, tapi  # flask app, smapi client, and tapi, as set up in init.
-
+from sm_voice.business_logic import *
 
 @app.route('/choose', methods=["GET", "POST"])
 def choose():
@@ -23,6 +23,17 @@ def status_callback():
     print("Status: %s" % status.get("CallStatus", "N/A"))
     print("Recording: %s" % status.get("RecordingUrl", "N/A"))
     return '', 204
+
+@app.route('/select_survey', methods=["POST"])
+def select_survey():
+    print("survey select")
+    sid = request.form.get("survey_id")
+    if sid is not None and sid.isnumeric():
+        result = check_survey_compatibility(sid)
+        if result is True:
+            return "YAY", 200
+    return "NOOOO", 500
+
 
 
 @app.route('/smapitest', methods=["GET", "POST"])

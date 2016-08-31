@@ -7,15 +7,26 @@ $( "#tapitest" ).click(function() {
     });
 });
 
+
+function check_survey(sid) {
+  $.post("/select_survey", {survey_id: sid}, function(response) {
+        alert( "Successfully talked to backend: " + response );
+    })
+    .fail(function(xhr, status, error) {
+        alert( "Incompatible survey or survey id error or API error \n" + error);
+    });
+}
+
+
 var SurveyListRender = React.createClass({
     render: function() {
         var self = this;
           return (
-            <div className="list-group">
-              {this.props.surveys.map(function(survey, i){
-                return<a href="#" key={i} className="list-group-item" value={survey.id} onClick={() =>self.props.onSurveySelect(survey.id)} >{survey.title}</a>
-              })}
-            </div>
+                <div className="list-group">
+                    {this.props.surveys.map(function(survey, i){
+                    return<a href="#" key={i} className="list-group-item" value={survey.id} onClick={() =>self.props.onSurveySelect(survey.id)} >{survey.title}</a>
+                    })}
+                </div>
           )
     }
 });
@@ -39,7 +50,7 @@ var SelectSurveyComponent = React.createClass({
                                     surveys: response.data,
                                     total: response.total,
                                     page: response.page,
-                                    per_page: response.page,
+                                    per_page: response.per_page,
                                     prev: (response.page > 1)? true : false,
                                     next: (response.page * response.per_page <= response.total)? true : false,
                                 });
@@ -54,7 +65,8 @@ var SelectSurveyComponent = React.createClass({
         }
         ,function (){
             alert("set a survey! " + this.state.selected_survey);
-            }
+            check_survey(this.state.selected_survey)
+        }
         )
     },
     onConfirmSurvey: function(e){
@@ -62,16 +74,31 @@ var SelectSurveyComponent = React.createClass({
            alert(this.state.selected_survey);
         });
     },
+    onNextPrev: function(nextprev){
+        this.request = $.get("/smapitest", {page: this.state.page + nextprev, per_page: this.state.per_page}, function(response, status){
+                            this.setState({
+                                    surveys: response.data,
+                                    total: response.total,
+                                    page: response.page,
+                                    per_page: response.per_page,
+                                    prev: (response.page > 1)? true : false,
+                                    next: (response.page * response.per_page <= response.total)? true : false,
+                                });
+                            }.bind(this));
+    },
     render: function(){
         var surveys = this.state.surveys;
         return (
-          <div><SurveyListRender surveys={surveys} onSurveySelect={this.onSurveySelect} /></div>
+          <div>
+              <SurveyListRender surveys={surveys} onSurveySelect={this.onSurveySelect} />
+              <button disabled={!this.state.prev} onClick={() => this.onNextPrev(-1)} className="button">Prev</button><button disabled={!this.state.next} onClick={() => this.onNextPrev(1)} className="button">Next</button>
+          </div>
         );
     }
 
 });
 
-lol = ReactDOM.render(
+ReactDOM.render(
     <SelectSurveyComponent/>,
     document.getElementById('smcontent')
 );

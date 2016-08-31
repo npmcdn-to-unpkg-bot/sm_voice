@@ -15,7 +15,7 @@ class Calls(object):
 
     def add_call(self, call):
         # low-weight app, I don't want to handle more than a handful of calls.
-        if len(self._calls() < 5):
+        if len(self._calls() <= 5):
             self._calls.append(call)
             return True
         return False

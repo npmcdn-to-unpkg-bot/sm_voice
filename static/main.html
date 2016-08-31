@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--head-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Voice Calling Extension for SurveyMonkey">
+    <meta name="author" content="Sam Eslamdoust">
+    <title>SurveyMonkey Voice</title>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="sm_voice.css" rel="stylesheet">
+</head><!--head-->
+
+<body>
+
+<!--navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img class="smv-logo" src="monkey.svg">SurveyMonkey Voice<span class="glyphicon glyphicon-phone-alt phone-logo"></span></a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Home</a></li>
+        <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+            <ul class="dropdown-menu">
+                <li><a id="smconfigbtn" href="#">SurveyMonkey API Config</a></li>
+                <li><a id="tconfigbtn" href="#">Twilio API Config</a></li>
+            </ul>
+        </li>
+        <li><a href="#contactinfo" data-toggle="modal">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav><!--navbar-->
+
+<!--Main Jumbotron-->
+<div class="jumbotron">
+<div class="container">
+    <h3>SurveyMonkey + Twilio = VoIP Survey Collection</h3>
+    <p>A VoIP survey distribution and collection service built on top of the SurveyMonkey API. This isn't a SurveyMonkey product, but we use SurveyMonkey API as the Survey creation and analysis engine.</p>
+    <p>To get started, attach a compatible survey: one page, 10 questions or less, all multiple choice, 5 choices or less per question.</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Test Twilio »</a> <a class="btn btn-primary btn-lg" href="#smtest" data-toggle="modal" role="button">Test SM API »</a></p>
+    <div class="content_area"></div>
+</div><!--container-->
+</div><!--jumbotron-->
+
+<!--Features area-->
+<div class="container">
+<div class="row features">
+    <div class="col-md-3">
+        <img class="smv-logo-large" src="monkey.svg" aria-hidden="true">
+        <h3>Survey Monkey API</h3>
+        <p>Build your surveys in survey monkey and have them analyzed by the powerful surveymonkey analysis tools.</p>
+    </div>
+    <div class="col-md-3">
+        <span class="glyphicon glyphicon-phone-alt glyphicon-large" style="color: red;" aria-hidden="true"></span>
+        <h3>VoIP Delivery</h3>
+        <p>Harnesses VoIP technology to deliver surveys and register user responses. Plug in a number to send survey.</p>
+    </div>
+    <div class="col-md-3">
+        <span class="glyphicon glyphicon-ok-circle glyphicon-large" style="color: gold;" aria-hidden="true"></span>
+        <h3>Built with React.js</h3>
+        <p>Some of the fronted tools were built with react so I could learn some React.js coding. Pretty cool stuff.</p>
+    </div>
+    <div class="col-md-3">
+        <span class="glyphicon glyphicon-refresh glyphicon-large" style="color: lightgreen;" aria-hidden="true"></span>
+        <h3>Reusable Components</h3>
+        <p>I've separated some of this projects components into their own repos in case any one wants to use the amply-documented code.</p>
+    </div>
+</div><!--row-->
+</div><!--container-->
+<!--End features area-->
+
+<!--MODALS:-->
+
+<!--SM Test Modal -->
+<div id="smtest" class="modal fade" role="dialog">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Choose Survey</h4>
+            <div id="test2"></div>
+        </div>
+        <div class="modal-body">
+            <div id="smcontent"></div>
+            <script type="text/babel" src="js/sm_voice.js"></script>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--SM Test Modal-->
+
+<!--Contact Info Modal-->
+<div id="contactinfo" class="modal fade" role="dialog">
+<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img class="smv-logo-modal-header" src="monkey.svg" alt="monkey pic"/>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h5 class="modal-title">Samuel Eslamdoust</h5>
+        </div>
+        <div class="modal-body">
+            <img class="img-responsive contact-profile-pic" src="https://avatars3.githubusercontent.com/u/3181018?v=3&s=460" alt="profile picture">
+            <div class="contact-points">
+                <br/><span class="glyphicon glyphicon-ok glyphicon-small-contact" aria-hidden="true"></span><span class="label label-default">Human Being</span>
+                <br/><span class="glyphicon glyphicon-ok glyphicon-small-contact" aria-hidden="true"></span><span class="label label-default">Software Developer</span>
+                <br/><span class="glyphicon glyphicon-ok glyphicon-small-contact" aria-hidden="true"></span><span class="label label-default">Computer Tinkerer</span>
+            </div>
+            <div class="contact-email">
+                <a class="label label-default" href="sammy.esla@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp; Email Me</a>
+            </div>
+        </div><!--body end-->
+        <!--<div class="modal-footer">-->
+        <!--</div>-->
+    </div>
+</div>
+</div>
+<!--Contact Info Modal-->
+
+
+<!--scripts-->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>-->
+<script src="https://npmcdn.com/react@15.3.1/dist/react-with-addons.js"></script>
+<script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+<script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+<div hidden="true">Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+<!--end scripts-->
+
+</body>
+
+</html>

@@ -28,7 +28,8 @@ def status_callback():
 @app.route('/smapitest', methods=["GET", "POST"])
 def smapi_test():
     print("sm api test")
-    surveys = smapi.get_surveys_list()
+    requestvars = request.args
+    surveys = smapi.get_surveys_list(**requestvars)
     return jsonify(surveys), 200
 
 

@@ -1,3 +1,12 @@
+$( "#tapitest" ).click(function() {
+  $.post("/tapitest", {to: $("#to").val()}, function() {
+        alert( "Successfully talked to backend. Wait for your phone to ring." );
+    })
+    .fail(function(xhr, status, error) {
+        alert( "Phone number or API error \n" + error);
+    });
+});
+
 var SurveyListRender = React.createClass({
     render: function() {
         var self = this;
@@ -45,7 +54,6 @@ var SelectSurveyComponent = React.createClass({
         }
         ,function (){
             alert("set a survey! " + this.state.selected_survey);
-                debugger;
             }
         )
     },

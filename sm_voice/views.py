@@ -4,7 +4,7 @@ from sm_voice import app, smapi, tapi  # flask app, smapi client, and tapi, as s
 
 @app.route('/choose', methods=["GET", "POST"])
 def choose():
-    return tapi.get_input("Press 1 for sound clip, 2 for exit.", "/play_sound", 1), 200
+    return tapi.get_input("Welcome to SM Voice. Press 1 for sound clip, 2 for exit.", "/play_sound", 1), 200
 
 
 @app.route('/play_sound', methods=["GET", "POST"])
@@ -37,7 +37,7 @@ def smapi_test():
 def twilio_test():
     print("twilio test")
     to = request.form.get("to")
-    if to is not None:
+    if to is not None and to.isnumeric() and 10 <= len(to) <= 11:
         call = tapi.call_phone(to, "/choose", "/status", True)
         print("Twilio Call SID: %s" % call.sid)
         return "OK!", 200

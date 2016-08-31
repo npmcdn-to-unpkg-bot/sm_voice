@@ -10,9 +10,10 @@ A little personal project to facilitate taking SurveyMonkey surveys over the pho
 `v0.1:`
 
 1. Clone repo
-2. Fill in config.ini
-3. Run sm_voice.py
-4. From terminal, execute either of the following for testing functionality:
+2. run `$git submodule init` and `$git submodule update` in the project directory to pull in the sm_api module (where this readme.md file is)
+3. Fill in config.ini - It is important that you fill this in properly, or the application will not work.
+4. Run sm_voice.py from the project directory with Python3.5 `$python3.5 sm_voice.py`
+5. From terminal, execute either of the following for testing functionality:
   * `curl http://127.0.0.1:5000/smapitest`
   * `curl -X POST -d 'to=YOUR-PHONE-NUMBER-HERE' http://127.0.0.1:5000/tapitest`
 

@@ -50,7 +50,10 @@
     <h3>SurveyMonkey + Twilio = VoIP Survey Collection</h3>
     <p>A VoIP survey distribution and collection service built on top of the SurveyMonkey API. This isn't a SurveyMonkey product, but we use SurveyMonkey API as the Survey creation and analysis engine.</p>
     <p>To get started, attach a compatible survey: one page, 10 questions or less, all multiple choice, 5 choices or less per question.</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Test Twilio »</a> <a class="btn btn-primary btn-lg" href="#smtest" data-toggle="modal" role="button">Test SM API »</a></p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="#twiliotest" data-toggle="modal" role="button">Test Twilio »</a>
+        <a class="btn btn-primary btn-lg" href="#smtest" data-toggle="modal" role="button">Test SM API »</a>
+    </p>
     <div class="content_area"></div>
 </div><!--container-->
 </div><!--jumbotron-->
@@ -105,6 +108,29 @@
 </div>
 </div>
 <!--SM Test Modal-->
+
+<!--Twilio Test Modal-->
+<div id="twiliotest" class="modal fade" role="form">
+<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img class="smv-logo-modal-header" src="monkey.svg" alt="monkey pic"/>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h5 class="modal-title">Twilio Test</h5>
+        </div>
+        <div class="modal-body">
+            <label for="to" class="sr-only">Mobile</label>
+            <div class="col-xs-12">
+              <input style= "width: 250px;"type="tel" id="to" placeholder="Your number: e.g. 778-555-1234">
+            </div>
+        </div><!--body end-->
+        <div class="modal-footer">
+            <button id="tapitest" class="btn btn-primary" data-dismiss="modal">Test Call</button>
+        </div>
+    </div>
+</div>
+</div>
+<!--Twilio Test Modal-->
 
 <!--Contact Info Modal-->
 <div id="contactinfo" class="modal fade" role="dialog">

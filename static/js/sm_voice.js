@@ -65,7 +65,7 @@ var SelectSurveyComponent = React.createClass({
         }
         ,function (){
             alert("set a survey! " + this.state.selected_survey);
-            check_survey(this.state.selected_survey)
+            // check_survey(this.state.selected_survey)
         }
         )
     },
